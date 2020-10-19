@@ -1,0 +1,106 @@
+html {
+  font-size: 5.33333333vw;
+}
+.wrap {
+  width: 18.75rem;
+  height: 39rem;
+  background-image: url(../img/changeStudent-topbarbg.jpg);
+  background-size: 100% 100%;
+  padding-top: 2.4rem;
+  overflow: hidden;
+}
+.topbar {
+  width: 15.15rem;
+  margin: auto;
+  padding: 0 0.8rem;
+  height: 12.5rem;
+  background-image: url(../img/changeStudent-background.jpg);
+  background-size: 100% 100%;
+  position: relative;
+  margin-bottom: 6.6rem;
+}
+.changeMsg {
+  position: absolute;
+  top: -1.375rem;
+  left: 0;
+}
+#studentName li {
+  width: 3rem;
+  line-height: 1.375rem;
+  border: 1px solid #C2E5FA;
+  border-bottom: none;
+  float: left;
+  margin-right: 0.6rem;
+  text-align: center;
+  font-size: 0.75rem;
+  color: #002526;
+  font-weight: 500;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+.content {
+  margin-left: 1.65rem;
+  padding-top: 4.1rem;
+  position: relative;
+}
+.content2 {
+  margin-left: 1.65rem;
+  padding-top: 4.1rem;
+  position: relative;
+  display: none;
+}
+label {
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+.changeSchool {
+  position: relative;
+}
+.lodMsg-school {
+  position: absolute;
+  top: -0.825rem;
+  left: 4rem;
+  font-size: 0.45rem;
+  color: #597e97;
+}
+.changeClassroom {
+  position: relative;
+}
+.lodMsg-classroom {
+  position: absolute;
+  top: -0.825rem;
+  left: 4rem;
+  font-size: 0.45rem;
+  color: #597e97;
+}
+select {
+  width: 60%;
+  height: 1.5rem;
+  border-radius: 7px;
+  border: 1px solid #3367A0;
+  font-size: 1rem;
+  color: #597e80;
+  padding: 0 0.75rem;
+  margin-bottom: 2rem;
+}
+#btn {
+  width: 10.75rem;
+  height: 1.95rem;
+  font-size: 0.75rem;
+  background-color: #52C2C6;
+  border: 0;
+  border-radius: 7px;
+  color: white;
+  right: 2.5rem;
+  top: 8.75rem;
+  margin: 0 3.675rem;
+}
+.studentNumber {
+   display: none;
+ }
+.schoolname {
+  display: none;
+}
+.classname {
+  display: none;
+}

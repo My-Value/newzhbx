@@ -1,0 +1,159 @@
+html {
+  font-size: 5.33333333vw;
+}
+.wrap {
+  width: 18.75rem;
+  height: 43rem;
+  background-image:url(../img/student-background.png);
+  background-size: 100% 100%;
+  overflow: hidden;
+}
+.topbar {
+  width: 18.75rem;
+  height: 17.525rem;
+  background-image: url(../img/switchAccount-banner.png);
+  background-size: 100% 100% ;
+  margin-bottom: 2rem;
+  overflow: hidden;
+}
+.user {
+  width: 100%;
+  height: 4rem;
+  margin: 1.375rem 0;
+  overflow: hidden;
+  background-image: url(../img/user-color-bg.png);
+  background-size: 100% 100%;
+  position: relative;
+}
+.user img {
+  width: 2.95rem;
+  margin: 0.5rem 0.6rem;
+  float: left;
+}
+.user-msg {
+  float: left;
+  margin-top: 0.45rem;
+}
+.user-msg p {
+  font-size: 1rem;
+  color: #fff;
+  margin-bottom: 0.4rem;
+}
+.user-msg span {
+  font-size: 0.6rem;
+  color: #abc1c9;
+}
+.user-two {
+  width: 100%;
+  margin: 1.375rem 0;
+  overflow: hidden;
+  background-image: url(../img/user-color-bg.png);
+  background-size: 100% 100%;
+}
+.user-two img {
+  width: 2.95rem;
+  margin: 0.5rem 0.6rem;
+  float: left;
+}
+.user-msg {
+  float: left;
+  line-height: 2.625rem;
+}
+.user-msg p {
+  float: left;
+  font-size: 1rem;
+  color: #fff;
+  margin-bottom: 0.4rem;
+}
+.user-msg span {
+  font-size: 0.6rem;
+  color: #abc1c9;
+  margin-left: 0.75rem;
+}
+.del {
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 50%;
+  background-image: url(../img/del-student.png);
+  float: right;
+  background-size: 100% 100%;
+  margin: 1.2rem 0.875rem 1.2rem 0;
+}
+#user-one-right {
+  display: none;
+}
+#user-one-right img {
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 50%;
+  position: absolute ;
+  right: 0;
+  background-size: 100% 100%;
+  margin: 1.2rem 0.875rem 1.2rem 0;
+}
+#addstudent {
+  margin: 4rem 3.7rem 0 3.7rem;
+  padding: 0.4rem 2rem;
+  color: #fff;
+  margin-bottom: 0.8rem;
+  text-align: center;
+  background-color: #52C2C6;
+  box-shadow: 0 2px 4px rgb(93,214,219), 0 0 6px rgb(93,214,219);
+}
+#addstudent img {
+  width: 1.5rem;
+  vertical-align: middle;
+  /* line-height:1.4rem; */
+}
+#addstudent span {
+  font-size: 0.9rem;
+  font-weight: bold;
+  line-height:1.5rem;
+}
+#delstudent {
+  height: 1.4rem;
+  margin: 0.25rem 3.7rem 0 3.7rem;
+  padding: 0.4rem 2rem;
+  color: #fff;
+  margin-bottom: 0.8rem;
+  text-align: center;
+  background-color: #91B1D1;
+  box-shadow: 0 2px 4px rgb(155,188,222), 0 0 6px rgb(155,188,222);
+}
+#delstudent span {
+  font-size: 0.9rem;
+  font-weight: bold;
+  line-height:1.4rem;
+}
+#delstudent img {
+  width: 1.5rem;
+  line-height:1.4rem;
+  vertical-align: middle;
+}
+.del {
+  display: none;
+}
+.studentNumber{
+  display: none;
+}
+#delspan{
+  display: inline;
+}
+#hidedel{
+  display: none;
+}
+
+#changeStudentMsg{
+  margin:0rem 3.7rem 0 3.7rem;
+  padding:0.4rem 2rem;
+  color:#fff;
+  margin-bottom:0.8rem;
+  line-height:1.4rem;
+  text-align:center;
+  background-color:#468acf;
+  box-shadow: 0 2px 4px rgba(119,189,216,0.8), 0 0 6px rgba(126,162,228, 0.8);
+}
+#changeStudentMsg span{
+  font-size:0.9rem;
+  font-weight:bold;
+}

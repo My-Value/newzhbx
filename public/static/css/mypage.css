@@ -1,0 +1,75 @@
+html {
+  font-size: 5.33333333vw;
+}
+.wrap {
+  width: 18.75rem;
+  background-image: url(../img/MyPage-background.png);
+  height: 35rem;
+  overflow: hidden;
+}
+.topbar {
+  height: 7.5rem;
+  background-image: url(../img/MyPage-topbar.png);
+  background-size: 100% 100%;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+.topbar img {
+  width: 3.95rem;
+  margin: 1.95rem 7.1rem 1.45rem 7.3rem;
+}
+.user-info {
+  height: 12.125rem;
+  background-image: url(../img/MyPage-banner-background.png);
+  background-size: 100% 100% ;
+  padding-top: 1.2rem;
+  margin-bottom: 1rem;
+}
+.user-content {
+  padding: 0 0.8rem;
+}
+.user-content li {
+  border-bottom: 1px solid;
+  padding-bottom: 0.4rem;
+  margin-top: 1rem;
+}
+.user-content .user-info-left {
+  font-size: 0.75rem;
+  color: #000;
+  margin-bottom: 0.4rem;
+}
+.user-info-right {
+  margin-left: 7.5rem;
+  right: 0;
+  font-size: 0.75rem;
+  color: #366c6e;
+}
+.footer {
+  height: 6.625rem;
+  padding: 1.4rem 0.8rem;
+  background-image: url(../img/MyPage-footer-background.png);
+}
+.footer .footer-left {
+  font-size: 0.75rem;
+  float: left;
+}
+.footer-right {
+  width: 8.5rem;
+  float: right;
+}
+.footer-right img {
+  width: 0.7rem;
+  vertical-align: middle;
+  margin-right: 0.6rem;
+}
+.footer-right .parent-name {
+  margin-right: 1rem;
+}
+.footer-right .parent-pnumber {
+  position: absolute;
+  right: 0;
+  margin-right: 0.8rem;
+}
+.parent-info {
+  margin-bottom: 0.6rem;
+}

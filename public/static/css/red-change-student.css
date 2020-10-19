@@ -1,0 +1,111 @@
+html {
+    font-size: 5.33333333vw;
+    background-image: url(../img/redstudent-backgroundcolor.png);
+    background-size: 100% 100%;
+  }
+  .wrap {
+    width: 18.75rem;
+    /* height: 39rem; */
+    padding-top: 2.5rem;
+    overflow: hidden;
+  }
+  .topbar {
+    width: 15.15rem;
+    margin: auto;
+    padding: 0 0.8rem;
+    height: 12.5rem;
+    background-image: url(../img/redstudent-change-bk.png);
+    background-size: 100% 100%;
+    position: relative;
+    margin-bottom: 6.6rem;
+    z-index: 999;
+  }
+  .changeMsg {
+    position: absolute;
+    top: -1.4rem;
+    left: 0;
+  }
+  #studentName li {
+    width: 3rem;
+    line-height: 1.375rem;
+    border: 1px solid #E67373;
+    border-bottom: none;
+    float: left;
+    margin-right: 0.6rem;
+    text-align: center;
+    font-size: 0.75rem;
+    color: #002526;
+    font-weight: 500;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+  }
+  .content {
+    padding-top: 3rem;
+    position: relative;
+  }
+  .content2 {
+    /*margin-left: 1.65rem;*/
+    padding-top: 4.1rem;
+    position: relative;
+    display: none;
+  }
+  label {
+    margin-left:0.1rem;
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: #ffffff;
+  }
+  .changeSchool {
+    position: relative;
+    margin-bottom: 0.2rem;
+  }
+  .lodMsg-school {
+    position: absolute;
+    top: -0.825rem;
+    left: 5.6rem;
+    font-size: 0.6rem;
+    color: #FF9999;
+  }
+  .changeClassroom {
+    position: relative;
+  }
+  .lodMsg-classroom {
+    position: absolute;
+    top: -0.825rem;
+    left: 5.6rem;
+    font-size: 0.6rem;
+    color: #FF9999;
+  }
+  select {
+    width:10.4rem;
+    height: 2rem;
+    border-radius: 7px;
+    border: 1px solid #FF7F7F;
+    font-size: 2rem;
+    color: #597e80;
+    padding: 0 0.6rem;
+    margin-bottom: 2rem;
+    background-color: transparent;
+  }
+  #btn {
+    width: 11.25rem;
+    height: 2rem;
+    line-height: 2.02rem;
+    font-size: 0.9rem;
+    background-color: #E57373;
+    border: 0;
+    border-radius: 5px;
+    color: white;
+    right: 2.5rem;
+    top: 8.75rem;
+    margin: 0 3.675rem;
+  }
+  .studentNumber {
+     display: none;
+   }
+  .schoolname {
+    display: none;
+  }
+  .classname {
+    display: none;
+  }
