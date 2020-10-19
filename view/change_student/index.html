@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>申请变更</title>
+    <link rel="stylesheet" href="/public/static/css/red-change-student.css">
+    <link rel="stylesheet" href="/public/static/css/common.css">
+    <style>
+
+        select{
+            color: #FDCE2E;
+            font-size: 0.75rem;
+        }
+        option{
+            color: #FDCE2E;
+            font-size: 0.75rem;
+        }
+    </style>
+</head>
+
+<body>
+<div class="wrap">
+    <div class="topbar">
+        <div class="changeMsg">
+            <ul id="studentName">
+                {if(!empty($studentsList))}
+                {foreach $studentsList as $k=>$v}
+                <li class="lis">
+                    <span class="name">{$v['name']}</span>
+                    <span class="studentNumber">{$v['stu_num']}</span>
+                    <span class="schoolname">{$v['schoolname']}</span>
+                    <span class="classname">{$v['classname']}</span>
+                </li>
+                {/foreach}
+                {else /}
+                {/if}
+            </ul>
+        </div>
+        <div class="content">
+            <div class="changeSchool">
+                <label>变更学校：</label>
+                <div class="lodMsg-school">
+                    <span>现学校：</span>
+                    <span id="alterMsgSchool">{$studentsList[0]['schoolname']}</span>
+
+                </div>
+                <select class="sel" id="getschool" type='切换学生' name="切换学生" onchange="gets()">
+                    <option selected:disabled style="display: none;">请选择您要变更的学校</option>
+                    {if(!empty($schoolList))}
+                    {foreach $schoolList as $k=>$v}
+                    <option value={$v['num']}>{$v['name']}</option>
+                    {/foreach}
+                    {else /}
+                    {/if}
+                </select>
+            </div>
+            <div class="changeClassroom">
+                <label>变更班级：</label>
+                <div class="lodMsg-classroom">
+                    <span>现班级：</span>
+                    <span id="alterMsgClassroom">{$studentsList[0]['classname']}</span>
+
+                </div>
+                <select class="sel" name="" id="getclassroom" onchange="getc()">
+                    <option selected:disabled style="display:none;color: #FDCE2E;">请选择您要变更的班级</option>
+
+                </select>
+            </div>
+        </div>
+    </div>
+    <button id="btn" value="提交">确定申请</button>
+</div>
+<script src="/public/static/js/jquery-3.5.1.js"></script>
+<script>
+
+
+    var getstudentname = '';
+    var changeSchool = '';
+    var changeClassroom = '';
+    var studentNumber = '';
+    //接收msg的数组
+    var str = '';
+    // alterMsgSchool,alterMsgClassroom获取的老的班级号和学校
+    var alterMsgSchool = document.getElementById("alterMsgSchool")
+    var alterMsgClassroom = document.getElementById("alterMsgClassroom")
+    var lis = document.getElementById("studentName").getElementsByTagName("li");
+    lis[0].style.backgroundColor = "#E67373";
+    lis[0].style.color = 'white';
+    getstudentname = lis[0].getElementsByClassName("name")[0].innerHTML;
+    studentNumber = lis[0].getElementsByClassName("studentNumber")[0].innerHTML;
+    for (var i = 0; i < lis.length; i++) {
+        // 学校的下拉菜单
+        var getschool = document.getElementById("getschool");
+        var getclassroom = document.getElementById("getclassroom");
+        function gets() {
+            var index = getschool.selectedIndex;
+            //获取点击学校的vlaue，
+            var values=getschool.options[index].value;
+            //把获取到的values值，赋值给changeSchool，并在ajax传递给后台
+            changeSchool = values;
+            console.log("我是获取下拉框的value"+changeSchool);
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                url: "classList",
+                async:false,
+                data: {
+                    scid: changeSchool
+                },
+                success: function (msg) {
+                    console.log(msg);
+                    str=msg;
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    console.log(XMLHttpRequest.status);
+                    console.log(XMLHttpRequest.readyState);
+                    console.log(textStatus);
+                }
+            })
+            //把获取到的班级option插入到班级select
+            var frage = document.createDocumentFragment();
+            console.log(str.length);
+            var i;
+            var v;
+            var c;
+            var j;
+            getclassroom.options.length=0;
+            for( i = 0,len =str.length;i<len;i++) {
+
+                v=str[i]['num'];
+                c=str[i]['name'];
+
+                var o = document.createElement("option");
+                o.value = v;
+                o.text = c;
+                frage.appendChild(o);
+            }
+            getclassroom.appendChild(frage);
+
+        }
+
+        // 班级的下拉菜单
+        function getc() {
+            var index = getclassroom.selectedIndex;
+            var values=getclassroom.options[index].value;
+            console.log(values);
+            changeClassroom = values;
+
+        }
+
+        lis[i].setAttribute("index", i);
+        lis[i].onclick = function () {
+            for ( i = 0; i < lis.length; i++) {
+                // 获取学生名字
+                var name = this.getElementsByClassName("name")[0].innerHTML;
+                var choosetudentNumber = this.getElementsByClassName("studentNumber")[0].innerHTML;
+                var schoolname=this.getElementsByClassName("schoolname")[0].innerHTML;
+                var classname=this.getElementsByClassName("classname")[0].innerHTML;
+                // console.log(schoolname)
+                // console.log(choosetudentNumber);
+                if (this.getAttribute("index") == i) {
+                    lis[i].style.color = "#fff";
+                    lis[i].style.backgroundColor = "#E67373";
+                    studentNumber=choosetudentNumber;
+                    console.log("我是"+schoolname)
+                    alterMsgSchool.innerHTML=schoolname
+                    alterMsgClassroom.innerHTML = classname;
+                    console.log("我是"+classname)
+
+                } else {
+                    lis[i].style.color = "black";
+                    lis[i].style.backgroundColor = "";
+
+                }
+            }
+        }
+    }
+    document.getElementById("btn").addEventListener("click", function () {
+        if (changeSchool == '') {
+            alert("请选择变更的班级和学校");
+        } else  {
+            if (changeClassroom == ''){
+
+                var value = getclassroom.options[0].value;
+                changeClassroom = value;
+            }
+
+            console.log(changeClassroom);
+
+            var flag = confirm("请确定提交信息");
+            if (flag) {
+                console.log(getstudentname);
+                console.log(studentNumber);
+                console.log(changeSchool);
+                console.log(changeClassroom);
+                console.log(alterMsgSchool);
+                console.log(alterMsgClassroom);
+                $.ajax({
+                    type: "POST",
+                    dataType: "json",
+                    url: "addChangeRecord",
+                    data: {
+                        stuNum: studentNumber,
+                        stuName: getstudentname,
+                        newSchool: changeSchool,
+                        newClass: changeClassroom,
+                        oldSchool: alterMsgSchool.innerHTML,
+                        oldClass: alterMsgClassroom.innerHTML,
+                    },
+                    success: function (msg) {
+                        console.log(msg);
+                        console.log(msg['status']);
+                        if (msg['status']) {
+                            alert(msg['msg'])
+                            window.location.href = "student";
+                        } else {
+                            alert(msg['msg']);
+                        }
+                        // alert("提交成功，请等待管理员审核")
+                        // window.location.href = "student";
+
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        console.log(XMLHttpRequest.status);
+                        console.log(XMLHttpRequest.readyState);
+                        console.log(textStatus);
+                    }
+                });
+            }
+        }
+
+    })
+</script>
+</body>
+
+</html>

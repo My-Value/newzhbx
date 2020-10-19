@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学生管理</title>
+    <link rel="stylesheet" href="/public/static/css/common.css">
+    <link rel="stylesheet" href="/public/static/css/redstudentcss.css">
+</head>
+
+<body>
+<div class="wrap">
+    <div class="topbar">
+
+        {if(!empty($students))}
+        {foreach $students as $k=>$v}
+        <div class="user">
+            <div class="user-one-left">
+                <!-- <img src="/public/static/img/switchAccount-heard-img.png" alt=""> -->
+                <img src="/public/static/img/redstudent-image.png" alt="">
+                <div class="user-msg">
+                    <p class="username">{$v.name}</p>
+                    <span class="studentNumber">{$v.stu_num}</span>
+                    <span>{$v.classname}</span>
+                </div>
+            </div>
+            <div class="del"></div>
+        </div>
+        {/foreach}
+        {else /}
+        {/if}
+    </div>
+    <div id="addstudent">
+        <!--<img src="/static/img/add.png" alt="">-->
+        <span>新增账号</span>
+    </div>
+    <div id="delstudent">
+        <!--<img id="img-style" src="/static/img/delete.png" alt="">-->
+        <span id="delspan">解绑账号</span>
+        <span id="hidedel">取消</span>
+    </div>
+    <!--申请变更-->
+    <div id="changeStudentMsg">
+        <span>申请变更</span>
+    </div>
+
+</div>
+<script src="/public/static/js/jquery-3.5.1.js"></script>
+<script>
+    document.getElementById("addstudent").addEventListener("click", function () {
+        var parent = this.parentNode;
+        var users = parent.getElementsByClassName("user").length;
+        console.log(users);
+        if (users < 3) {
+            window.location.href = "binding"
+        } else {
+            alert("绑定学生数量已达到上线")
+            window.location.href = "javascript:;"
+        }
+    });
+
+    var user = document.getElementsByClassName("user");
+    var delstudent = document.getElementById("delstudent")
+    var del = document.getElementsByClassName("del");
+    var studentNumber = document.getElementsByClassName("studentNumber");
+    var imgstyle = document.getElementById("img-style");
+    // console.log(studentNumber);
+    delstudent.onclick = function () {
+        if (delspan.innerHTML == "解绑账号") {
+            delstudent.style.backgroundColor="#e5a1a1"
+
+            delspan.innerHTML = "取消";
+            // imgstyle.style.display = "none"
+            var user = document.getElementsByClassName("user");
+            for (let i = 0; i < user.length; i++) {
+                del[i].style.display = "block";
+                del[i].onclick = function () {
+                    var parent = this.parentNode;
+                    var studentNumber = parent.getElementsByClassName("studentNumber")[0].innerHTML;
+                    var username = parent.getElementsByClassName("username")[0].innerHTML;
+                    console.log(studentNumber);
+                    var flag2 = confirm("您确定要解除与" + username + "的绑定吗？");
+                    if (flag2) {
+                        parent.parentNode.removeChild(parent);
+                        $.ajax({
+                            type: "POST",
+                            dataType: "json",
+                            url: "deleteParStu",
+                            data: {
+                                stuNum: studentNumber
+                            },
+                            success: function (msg) {
+                                console.log(msg);
+                            },
+                            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                                console.log(XMLHttpRequest.status);
+                                console.log(XMLHttpRequest.readyState);
+                                console.log(textStatus);
+                            }
+                        });
+                    }
+                }
+            }
+        }
+        else if (delspan.innerHTML == "取消") {
+            delstudent.style.backgroundColor="#E57373"
+            // imgstyle.style.display = "inline"
+            for (let i = 0; i < del.length; i++) {
+                del[i].style.display = "none";
+            }
+            delspan.innerHTML = "解绑账号"
+        }
+    }
+    // 申请变更跳转的地址
+    document.getElementById("changeStudentMsg").addEventListener("click",function(){
+        window.location.href = "changeStudent";
+    });
+</script>
+</body>
+
+</html>
